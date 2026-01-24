@@ -15,7 +15,7 @@ contract BinarySearch{
 
     }
 
-    function doSearch(uint[] memory array,uint num, uint startIndex, uint endIndex) private pure returns(uint index){
+    function doSearch(uint[] memory array,uint num, uint startIndex, uint endIndex) private pure returns(uint ){
         console.log("startindex = ,endIndex=", startIndex, endIndex);
 
         if (startIndex > endIndex) {       
@@ -35,6 +35,7 @@ contract BinarySearch{
 
         if (num < array[i]) {
             return doSearch(array, num, startIndex, i-1);
-        }     
+        }   
+        return 0;  
     }
 }
