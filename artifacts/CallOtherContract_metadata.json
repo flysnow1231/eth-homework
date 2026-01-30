@@ -1,0 +1,109 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "add",
+						"type": "address"
+					}
+				],
+				"name": "callGetX",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract OtherContract",
+						"name": "_Address",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "callSet",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "add",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "callSetX",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/demos/CallOtherContract.sol": "CallOtherContract"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/demos/CallOtherContract.sol": {
+			"keccak256": "0xc563855289b50b82fcd5d10fa2b661226002b30227b3fa41a225ddc1bd075463",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://128338a9d5b568028c726aa6fad611a63dc23485b9190da1baf52ed89c2913fe",
+				"dweb:/ipfs/QmaJ9xbAFWPqdgqTEydPvZrH9PkPff57QqbVwdd8Ymhxmu"
+			]
+		},
+		"contracts/demos/OtherContract.sol": {
+			"keccak256": "0x5706a3dd431d3f7fec0f50dbedccba2c484f28876f1dda37ee6f322b7c33b79b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://433e74c3fd7e9f5452f91a986cb2df1581ddb880e1918b6d86e0517341a010ff",
+				"dweb:/ipfs/QmfCJnEqCrGfEk7e3FhqTygAw77S9uebzkCV7KpSmvx2SS"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,66 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "msg",
+						"type": "string"
+					}
+				],
+				"name": "log",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "hip",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/demos/God.sol": "Eve"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/demos/God.sol": {
+			"keccak256": "0x687706f873161dbaefeed2a595b7e2358c0c769fdac99d3b84ba44fb36f8dce2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ef3e196a1c47fc0bf3af3e11435520b9be8db6cad0029dbacf33b0dfbd7996a6",
+				"dweb:/ipfs/QmX4oHwRJPzc3pCRYzgX9PnPfGH9uCj2b7TpACLavfY9nf"
+			]
+		}
+	},
+	"version": 1
+}
