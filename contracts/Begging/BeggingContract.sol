@@ -9,9 +9,11 @@ contract Begging{
     address[]  topDonors;
 
     address public  owner;
+    uint timeLimit;
 
-    constructor(){
+    constructor(uint duration){
         owner= msg.sender;
+        timeLimit = block.timestamp + duration;
     }
  
 
@@ -20,7 +22,12 @@ contract Begging{
         _;
     }
 
-    function donate() external payable {
+    modifier timeLimitModify(){
+        require(block.timestamp < timeLimit, "expired donate time");
+        _;
+    }
+
+    function donate() external payable timeLimitModify{
         require(msg.value > 0,"no eth sent");
         console.log("donote start");
         donorAmountMapping[msg.sender]=msg.value+ donorAmountMapping[msg.sender];

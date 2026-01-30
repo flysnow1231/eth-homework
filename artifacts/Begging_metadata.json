@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -149,11 +155,11 @@
 	},
 	"sources": {
 		"contracts/Begging/BeggingContract.sol": {
-			"keccak256": "0x74ff71fad42324ee8abd1ad5d81ae595d13b2031ea18333bfec96adf2de53820",
+			"keccak256": "0xc6c94e71117892b23f6fb11b0276b844de4b5b228c5e6ac99ac9f43ee8dd561f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://df30dd2afc8cc4d51ee579613eae62c43c32ef303475c27d0b89c1ce5ebc77aa",
-				"dweb:/ipfs/QmTKRJiaZw816YkKnebouff5u1QPHGHU7Q5bHRRKcuT9sJ"
+				"bzz-raw://119bd045c8064762e03d7019e3fd9bccc090c4fc95751a4b2a47e89be499a9ef",
+				"dweb:/ipfs/QmbKZiSpJ9hzxci9hEqcozVyenUuAY78V1AHs7o5sFt9K9"
 			]
 		},
 		"hardhat/console.sol": {
