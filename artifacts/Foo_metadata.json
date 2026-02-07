@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "selector1",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "selector2",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/demos/TransparentContracts/TransparentContracts.sol": "Foo"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/demos/TransparentContracts/TransparentContracts.sol": {
+			"keccak256": "0x1b43ddddf44e9a966190ef12db6ef46dc3ef2d262553f428d41af386b62e614f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3f8cdddb1d6a7fcaf08a79c156eaec823ce28052cc7b82315b852e60fc19e312",
+				"dweb:/ipfs/QmXRGKyy2HLT7TgFvvdrQiEbwwAXbxENvJH2WmQA7fvLXF"
+			]
+		}
+	},
+	"version": 1
+}

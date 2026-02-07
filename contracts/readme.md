@@ -1,3 +1,25 @@
+**a：delegatecall 跟 call 的区别是什么**  
+delegatecall操作的上下文是proxy，改变的是proxy的状态变量。  
+call操作的上下文是implement, 改变的是implement的状态变量。  
+
+**b：可升级合约的执行流程是什么（user -> proxy -> implementation）**    
+部署implementation1合约，部署proxy合约，初始化proxy状态变量，  
+将implementation1地址负值给proxy的implemention。    
+升级至implementation2：部署implementation2合约，调用proxy的upgrade函数   
+（只能由管理员调用），将implementation2地址  
+赋值给proxy的implemention。    
+
+**c：代理合约上本身是有存储的，怎么避免跟逻辑合约上的存储产生冲突**
+保持代理合约与逻辑合约状态变量layout一致。  
+
+**d： 逻辑合约升级的存储冲突问题**
+
+
+**e： 可以在逻辑合约的构造函数中初始化变量吗？为什么**
+不可以。因为逻辑合约中的成员变量平时是用不到的，状态变量在proxy中。
+
+
+
 **ERC20/ERC721合约中的transferFrom接口如何使用**
 
 trasferFrom(sender, recipient,amount), 由sender地址向recipient转账amount,  
