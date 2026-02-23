@@ -22,6 +22,6 @@ contract Counter {
   }
 
   function getVer() public pure returns(string memory){
-    return "v2-2026-02-07";
+    return "v2-2026-02-23";
   }
 }

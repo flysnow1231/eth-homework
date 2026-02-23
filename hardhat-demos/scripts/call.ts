@@ -9,7 +9,7 @@ console.log("call.ts started");
 async function main() {
 
 
-  const address = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+  const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
   console.log("address:...", address);
   const rpc = "http://127.0.0.1:8545";
   const provider = new ethers.JsonRpcProvider(rpc);
@@ -26,17 +26,17 @@ async function main() {
 
   const abi = [
     "function getVer() public pure returns(string memory)",
+    "function incBy(uint by) public",
+    "function getX() public view returns(uint)",
+    "function inc() public",   
   ];
 
   const c = new ethers.Contract(address, abi, wallet);
+ // console.log("version =>", (await c.getVer()).toString());
 
-  console.log("before =>", (await c.getVer()).toString());
-
-  console.log("sending inc() tx...");
-  const tx1 = await c.getVer();
-  console.log("tx1 hash:", tx1.hash);
-  
-  console.log("after inc =>", (await c.getVer()).toString());
+  console.log("before =>", (await c.getX()).toString());
+  await c.inc()
+  console.log("after inc =>", (await c.getX()).toString());
 
 }
 
