@@ -7,6 +7,9 @@ async function main() {
   // 3️⃣ 读取部署地址
   const deployed = JSON.parse(fs.readFileSync("deployed.json", "utf-8"));
   console.log("deployed.Proxy", deployed.Proxy);
+  
+  console.log("deployed.EthUsdPrice", deployed.EthUsdPrice);
+
 
   const proxyAddress = deployed.Proxy;
   
@@ -51,6 +54,9 @@ async function main() {
   // console.log("value:", Array.isArray(v) ? v[0].toString() : v.toString());
   // const code = await provider.getCode(proxyAddress);
   // console.log("code length:", code.length); // 不是 "0x" 才对 
+  
+
+    
  
  
 }

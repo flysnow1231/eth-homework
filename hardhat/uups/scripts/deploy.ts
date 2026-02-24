@@ -49,6 +49,13 @@ async function main() {
   const proxy = await deployWithArtifact(wallet, "Proxy", [deployed["UUPS1"]], nonce++);
   deployed["Proxy"] = proxy.address;
 
+  const chainLinkFeedAddress = "0x694AA1769357215DE4FAC081bf1f309aDC325306";
+  const ethUsdPrice = await deployWithArtifact(wallet, "EthUsdPrice", 
+    [chainLinkFeedAddress], nonce++);
+ 
+  deployed["EthUsdPrice"] = ethUsdPrice.address;
+
+
   const outPath = path.join(process.cwd(), "deployed.json");
   fs.writeFileSync(outPath, JSON.stringify(deployed, null, 2));
   console.log("📝 deployed.json written:", outPath);
