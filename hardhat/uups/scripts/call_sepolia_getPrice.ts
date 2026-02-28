@@ -4,12 +4,12 @@ async function main() {
   const provider = new ethers.JsonRpcProvider(process.env.SEPOLIA_RPC!);
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, provider);
 
-  // 3️⃣ 读取部署地址
+  //读取部署地址
   const deployed = JSON.parse(fs.readFileSync("deployed.json", "utf-8"));
   console.log("deployed.EthUsdPrice", deployed.EthUsdPrice);
   const ethUsdPriceAddress = deployed.EthUsdPrice;
   
-  // 4️⃣ ⚠️ 用「实现合约 ABI」+「代理地址」
+  //用「实现合约 ABI」+「代理地址」
   const implAbi = [
     "function ethUsd() external view returns (uint256 price, uint8 decimals, uint256 updatedAt)",
   ];
