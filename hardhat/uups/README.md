@@ -1,3 +1,16 @@
+** 首次部署说明 **  
+1.部署price feed 合约。执行deploy_UsdPriceManager.ts。  
+2.部署aka implement合约，执行deploy_aka.ts。本工程核心业务合约，主要功能是nft管理，拍卖。
+3.部署代理合约,执行deploy_proxy.ts.  
+
+** 升级流程 **  
+升级原理，本工程使用UUPS代理。修改AkaNft代码后，编译部署后，将akanft新地址绑定至代理，实现升级。   
+npx hardhat compile   
+npx hardhat run scripts/deploy_Aka.ts --network sepolia  
+npx hardhat run scripts/deploy_upgrade.ts --network sepolia
+
+
+** 常用命令 **
 npx hardhat compile
 npx hardhat run scripts/interact.ts --network sepolia
 
