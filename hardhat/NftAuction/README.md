@@ -1,3 +1,29 @@
+NFTAUCTION/
+├── contracts/
+│   ├── AkaNft.sol                     # 主合约
+│   ├── BlindBoxManager.sol            # library, 定义肓盒结构体
+│   ├── IPriceManager.sol              # 预言机接口，price feed功能
+│   ├── UsdPriceManager.sol            # IPriceManager实现类，从chainlink的feed中拿到eth/usd实时价格
+│   └── ProxyImprts.sol                # 项目importERC1967Proxy.sol
+├── test/
+│   └── NFTBlindBox.test.ts            # 测试文件
+├── scripts/
+│   ├── deploy_UsdPriceManager.ts      # 部署预言机合约
+│   ├── deploy_aka.ts                  # 部署主合约
+│   ├── deploy_proxy.ts                # 部署代理合约
+│   └── deploy_upgrade.ts              # 升级部署
+├── ignition/
+│   └── modules/
+│       └── 
+├── hardhat.config.ts                  # Hardhat 配置
+├── package.json                       # 项目依赖
+├── tsconfig.json                      # TypeScript 配置
+├── README.md                          # 项目说明
+└── images/
+    └── 
+```   
+
+
 ** 首次部署说明 **  
 1.部署price feed 合约。执行deploy_UsdPriceManager.ts。  
 2.部署aka implement合约，执行deploy_aka.ts。本工程核心业务合约，主要功能是nft管理，拍卖。  
