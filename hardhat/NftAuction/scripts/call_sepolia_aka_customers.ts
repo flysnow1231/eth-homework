@@ -55,29 +55,6 @@ async function main() {
   //     account: walletClient2.account,   // 👈 指定签名账户
   //  }));
 
-   
-
-  //console.log("\n openBoxOnSale:", await akaNft.write.openBoxOnSale([2n]));
-  //  console.log("\n purseNft :", await proxy.write.purseNft());
-  //  console.log("balance of walletClient2 :", await proxy.read.balanceOf([walletClient2.account.address]));
-  //  console.log("balance:", await proxy.read.balanceOf([walletClient2.account.address]));
-  //console.log("price:, bidder", await akaNft.write.openBoxOnSale([1n]))
-  //console.log("purseNft:",await akaNft.write.purseNft());
-  //  const txHash = await akaNft.write.purseNft( {
-  //   account: walletClient2.account,
-  //  });
-  //console.log("tx:", txHash);
-  //console.log("price:", await akaNft.read.getBoxPrice([1n]));
-  //  console.log("owner of box= ,is ", await akaNft.read.ownerOf([1n])); ;
-  //  const result = await akaNft.write.placeBid([2n,1n,1n],{
-  //   account: walletClient1.account,   // 👈 指定签名账户
-  //  });
-  //console.log("result:", result);
-  //console.log("price:, bidder", await akaNft.read.getBoxPrice([1n]));
-  //console.log("owner of box= ,is ", await proxy.write.stopAuction([1n])); ;
-  // const result = await akaNft.write.placeBid([2n,1n,1n],{
-  //   account: walletClient1.account,   // 👈 指定签名账户
-  //  });
 
 }
 
