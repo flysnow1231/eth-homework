@@ -28,12 +28,6 @@ contract UsdPriceManager is IPriceManager{
             uint256 _updatedAt,
             uint80 answeredInRound
         ) = ETH_USD.latestRoundData();
-
-        // require(answer > 0, "bad price");
-        // require(_updatedAt != 0, "stale");
-        // require(answeredInRound >= roundId, "incomplete round");
-        // console.log("x =", "d");
-        // console.log("ETH_USD.latestRoundData()", ETH_USD.latestRoundData());
         return (uint256(answer), decimals, _updatedAt);
     }
 
