@@ -1,6 +1,8 @@
 import { defineConfig } from "hardhat/config";
 import "dotenv/config";
 import hardhatToolboxViem from "@nomicfoundation/hardhat-toolbox-viem";
+import "@nomicfoundation/hardhat-viem";
+import "@nomicfoundation/hardhat-viem-assertions";
 
 export default defineConfig({
   plugins: [hardhatToolboxViem],

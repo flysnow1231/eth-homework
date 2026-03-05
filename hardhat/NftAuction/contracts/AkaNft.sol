@@ -55,10 +55,8 @@ contract AkaNft is Initializable, ERC721Upgradeable , OwnableUpgradeable,UUPSUpg
     function purseNft() external returns (bool) {
         //require(msg.sender != owner(), "Admin cannot buy blind box");
         //todo 白名单验证
-        if (totalSupply >= maxSupply) {
-            console.log("Blind Box Soldout!");
-            return false;
-        }
+        require(totalSupply < maxSupply, "Sold out");
+        
         uint256 blindBoxId = totalSupply;
         totalSupply++;
 
@@ -121,6 +119,7 @@ contract AkaNft is Initializable, ERC721Upgradeable , OwnableUpgradeable,UUPSUpg
 
 
         uint256 price = priceManager.ethAmountToUsd(tokenCount);
+        console.log("price:", price);
         //第一次出价 或者最高出价
         if (
             blindBoxBidPrice[blindBoxId] == 0 ||
@@ -182,5 +181,13 @@ contract AkaNft is Initializable, ERC721Upgradeable , OwnableUpgradeable,UUPSUpg
     function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
 
 
-    
+    // function getEthPrice()
+    //     external
+    //     view
+    //     returns (
+    //        uint256
+    //     )
+    // {
+    //     return  priceManager.ethAmountToUsd(1);
+    // }
 }

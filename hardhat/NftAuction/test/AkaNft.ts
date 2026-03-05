@@ -2,6 +2,23 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { network } from "hardhat";
 import { log } from "node:console";
+import { expect } from "chai";
+
+
+async function setup() {
+
+  const { viem } = await network.connect();
+
+  const akaNft = await viem.deployContract("AkaNft", []);
+
+  const [wallet1, wallet2] = await viem.getWalletClients();
+
+  return {
+    akaNft,
+    wallet1,
+    wallet2
+  };
+}
 
 test("akaNft: initialize() ", async () => {
     const { viem } = await network.connect();
@@ -70,14 +87,47 @@ test("akaNft: initialize() ", async () => {
     const bidInfo= await akaNft.read.getBoxPrice([1n]);
     console.log("bidInfo:", bidInfo);
     //assert(bidInfo > 0n);
+});
 
-    
+test("akaNft: purseNft() ", async () => {
+    const { viem } = await network.connect();
+    const publicClient = await viem.getPublicClient();
+    const [walletClient1, walletClient2, walletClient3] = await viem.getWalletClients();
 
+    const connection = await network.connect();
+    console.log("network:", connection.networkName);
 
+    const DECIMALS = 8;
+    const INITIAL_PRICE = 2000n * 10n ** 8n;
 
+    const mock = await viem.deployContract("MockPriceManager", [
+      INITIAL_PRICE,
+      DECIMALS,
+    ]);
+    const mockAddr = mock.address;
 
+    const akaNft = await viem.deployContract("AkaNft", []);
 
+    await akaNft.write.initialize([mockAddr, 2n], {
+        account: walletClient1.account,
+    });
 
+    const maxSupply1 = await akaNft.read.maxSupply();
+    //初始化完成后状态变量断言
+    assert.equal(maxSupply1, 2n);
+  
 
+    const wallet2Balance0 = await akaNft.read.balanceOf([walletClient2.account.address]);
+    await akaNft.write.purseNft({
+        account: walletClient2.account
+    });
+    await akaNft.write.purseNft({
+        account: walletClient2.account
+    });
 
+    await viem.assertions.revertWith(
+        akaNft.write.purseNft(),
+        "Sold out",
+    );
+   
 });

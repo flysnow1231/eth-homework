@@ -49,6 +49,8 @@ rm -rf artifacts cache
 npx hardhat clean
 npx hardhat compile --force
 
+npx hardhat test --coverage  
+
 
 0xbc63e9b8c7563afde3721F7fD1c40112d3b46AbF
 0xcaA35614B6b8e1F1F0f4A668686A6242cf6067F5
