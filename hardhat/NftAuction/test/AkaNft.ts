@@ -29,7 +29,8 @@ async function setup() {
         walletClient2,
         walletClient3,
         mockAddr,
-        viem
+        viem,
+        publicClient
     };
 
 }
@@ -39,7 +40,9 @@ async function setupAndInit() {
         walletClient2,
         walletClient3,
         mockAddr,
-        viem } = await setup();
+        viem,
+        publicClient
+    } = await setup();
 
     await akaNft.write.initialize([mockAddr, 100n], {
         account: walletClient1.account,
@@ -50,7 +53,8 @@ async function setupAndInit() {
         walletClient2,
         walletClient3,
         mockAddr,
-        viem
+        viem,
+        publicClient
     };
 
 }
@@ -82,7 +86,7 @@ test("akaNft: initialize() ", async () => {
     assert.equal(maxSupply1, 100n);
     assert.equal(symbol1, "BB");
     assert.equal(name1, "BlindBox");
-    assert.equal(contractOwner0.toString, walletClient1.account.address.toString);   
+    assert.equal(contractOwner0.toString, walletClient1.account.address.toString);
 });
 
 test("akaNft: purseNft() sold out", async () => {
@@ -116,7 +120,7 @@ test("akaNft: purseNft()", async () => {
         walletClient2,
         walletClient3,
         mockAddr,
-        viem } = await setupAndInit();
+        viem, publicClient } = await setupAndInit();
     console.log("purseNft test start:");
     const maxSupply1 = await akaNft.read.maxSupply();
     //初始化完成后状态变量断言
@@ -139,8 +143,8 @@ test("akaNft: purseNft()", async () => {
     assert.equal(box0[0], true);
     assert.equal(box0[1], false);
     assert(box0[2] > 0n);
-    assert.equal(box0[3] , 0n);
-    assert.equal(box0[4] , true);
+    assert.equal(box0[3], 0n);
+    assert.equal(box0[4], true);
     console.log("openBoxOnSale end");
 
     console.log("placeBid start:");
@@ -163,14 +167,25 @@ test("akaNft: purseNft()", async () => {
     //stop auction
     console.log("stop auction start:");
     const wallet3Balance0 = await akaNft.read.balanceOf([walletClient3.account.address]);
-    const stopResult = await akaNft.write.stopAuction([1n], { account: walletClient2.account });
-    
-    console.log("stopResult:", stopResult);
+    const hash = await akaNft.write.stopAuction([1n], { account: walletClient2.account });
+
+    console.log("stopResult:", hash);
     const wallet3Balance1 = await akaNft.read.balanceOf([walletClient3.account.address]);
-   
+    const receipt = await publicClient.waitForTransactionReceipt({
+        hash,
+    });
     assert.equal(wallet3Balance0, 0n);
     assert.equal(wallet3Balance1, 1n);
-  
+    const events = await publicClient.getContractEvents({
+        address: akaNft.address,
+        abi: akaNft.abi,
+        eventName: "DebugBox",
+        fromBlock: receipt.blockNumber,
+        toBlock: receipt.blockNumber,
+    });
+    console.log("event:", events);
+    assert.equal(events.length, 1);
+    assert.equal(events[0].eventName, "DebugBox");
     console.log("stop auction end");
 
 });
@@ -189,10 +204,10 @@ test("akaNft: stopAuction() only owner", async () => {
     await akaNft.write.purseNft({
         account: walletClient2.account
     });
-    
+
 
     await viem.assertions.revertWith(
-        akaNft.write.stopAuction([0n], { account: walletClient1.account }),   
+        akaNft.write.stopAuction([0n], { account: walletClient1.account }),
         "only owner of box can stop auction",
     );
     console.log("stopAuction test end");
